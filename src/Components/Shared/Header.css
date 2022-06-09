@@ -1,0 +1,40 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: rgb(207, 207, 207);
+    color: rgb(87, 87, 87);
+    font-weight: 500;
+    font-size: large;
+}
+.navbar ul{
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar ul li{
+    padding-left: 1rem;
+    list-style:none;
+    font-size: medium;
+}
+
+
+.fa-stack[data-count]:after{
+  position:absolute;
+  right:0%;
+  top:-10%;
+  content: attr(data-count);
+  font-size:50%;
+  padding:.4em;
+  border-radius:999px;
+  line-height:0.6rem;
+  color: white;
+  text-align:center;
+  min-width:1em;
+  height: 0.75rem;
+  width: 0.75rem;
+  font-weight:bold;
+  background: #575757;
+  /* border-style:solid; */
+
+}
