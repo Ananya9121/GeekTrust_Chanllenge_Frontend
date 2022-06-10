@@ -72,7 +72,7 @@ function App() {
   return (
     <>
       <Switch>
-        <Route exact path="/Cart">
+        <Route  path="/Cart">
           <Cart
             cartItems={cartItems}
             handleAdd={handleAdd}

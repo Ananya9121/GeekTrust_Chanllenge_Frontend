@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Productcard.css";
 
-function Productcard({ productList,filterProducts,cartItems, handleAddtocart}) {
+function Productcard({ filterProducts, handleAddtocart}) {
 
 
   return (

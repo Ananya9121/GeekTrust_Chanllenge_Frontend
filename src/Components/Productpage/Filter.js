@@ -3,13 +3,12 @@ import "./Filter.css";
 
 function Filter({
   productList,
-  setProductlist,
+  searchKeyword,
   setFilterproducts,
   filterProducts,
   isOpen,
   toggle,
 }) {
-  
   const colorList = [...new Set(productList.map((product) => product.color))];
   const genderList = [...new Set(productList.map((product) => product.gender))];
   const typeList = [...new Set(productList.map((product) => product.type))];
@@ -41,33 +40,55 @@ function Filter({
         });
     });
 
-   return priceRange.map((x)=> productPrice>=x[0] && productPrice<=x[1]);
-
+    return priceRange.map((x) => productPrice >= x[0] && productPrice <= x[1]);
   };
 
   const handleFilteredproductlist = (filterList) => {
     let { color, gender, type, price } = filterList;
     let filteredProducts = [];
 
-    if (
-      color.length === 0 &&
-      gender.length === 0 &&
-      type.length === 0 &&
-      price.length === 0
-    ) {
-      filteredProducts = [...productList];
+    if (searchKeyword.length) {
+      if (
+        color.length === 0 &&
+        gender.length === 0 &&
+        type.length === 0 &&
+        price.length === 0
+      ) {
+        filteredProducts = [...productList];
+      } else {
+        filteredProducts = filterProducts.filter((product) => {
+          return (
+            (color.length === 0 || color.includes(product.color)) &&
+            (gender.length === 0 || gender.includes(product.gender)) &&
+            (type.length === 0 || type.includes(product.type)) &&
+            (price.length === 0 ||
+              handlePrice(product.price, price).includes(true))
+          );
+        });
+      }
+      setFilterproducts(filteredProducts);
     } else {
-      filteredProducts = productList.filter((product) => {
 
-        return (
-          (color.length === 0 || color.includes(product.color)) &&
-          (gender.length === 0 || gender.includes(product.gender)) &&
-          (type.length === 0 || type.includes(product.type)) &&
-          (price.length === 0 || handlePrice(product.price,price).includes(true))
-        );
-      });
+      if (
+        color.length === 0 &&
+        gender.length === 0 &&
+        type.length === 0 &&
+        price.length === 0
+      ) {
+        filteredProducts = [...productList];
+      } else {
+        filteredProducts = productList.filter((product) => {
+          return (
+            (color.length === 0 || color.includes(product.color)) &&
+            (gender.length === 0 || gender.includes(product.gender)) &&
+            (type.length === 0 || type.includes(product.type)) &&
+            (price.length === 0 ||
+              handlePrice(product.price, price).includes(true))
+          );
+        });
+      }
+      setFilterproducts(filteredProducts);
     }
-    setFilterproducts(filteredProducts);
   };
 
   const handleSelectfilter = (filterValue, category) => {
@@ -104,7 +125,6 @@ function Filter({
 
     handleSelectfilter(filterValue, category);
   };
-
 
   if (toggle) {
     return (

@@ -17,7 +17,7 @@ function Header({ cartItems, totalQuantity, open }) {
 
   return (
     <div className="navbar">
-      <div className="logo">TeeRex Store</div>
+      <div className="logo" onClick={handleProduct}>TeeRex Store</div>
       <ul>
         <li onClick={handleProduct}>Products</li>
         <li onClick={handleCart}>
