@@ -89,6 +89,7 @@ function Productpage({ cartItems, handleAddtocart, totalQuantity }) {
             filterProducts={filterProducts}
             isOpen={isOpen}
             toggle
+            ToggleSidebar={ToggleSidebar}
           />
         </div>
       </div>

@@ -14,12 +14,19 @@ function App() {
 
   const handleAddtocart = (product) => {
     const productExist = cartItems.find((item) => item.id === product.id);
-
+if(product.quantity!==0){
     if (productExist) {
       alert("Product is alredy in the cart, please check the shopping cart!");
     } else {
       setCartitems([...cartItems, { ...product, productinCart: 1 }]);
     }
+  }
+  else{
+    alert("Sorry for the inconvience, product is out of stock!");
+
+  }
+
+
   };
 
   const handleAdd = (product) => {
@@ -34,7 +41,7 @@ function App() {
       );
       // alert(`${productExist.productinCart} items in the cart!`)
     } else {
-      alert("Stock is over, please check later for more stock!");
+      alert("Sorry for the inconvience, product is out of stock!");
     }
   };
 

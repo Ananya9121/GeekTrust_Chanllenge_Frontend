@@ -8,6 +8,7 @@ function Filter({
   filterProducts,
   isOpen,
   toggle,
+  ToggleSidebar
 }) {
   const colorList = [...new Set(productList.map((product) => product.color))];
   const genderList = [...new Set(productList.map((product) => product.gender))];
@@ -68,7 +69,6 @@ function Filter({
       }
       setFilterproducts(filteredProducts);
     } else {
-
       if (
         color.length === 0 &&
         gender.length === 0 &&
@@ -129,6 +129,18 @@ function Filter({
   if (toggle) {
     return (
       <div className={`toggle ${isOpen === true ? "active" : ""}`}>
+        <i
+          // className="fa fa-window-close" 
+          className="fa fa-times"
+          aria-hidden="true"
+          style={{
+            fontSize: "20px",
+            color: "gray",
+            display: "flex",
+            flexDirection: "row-reverse",
+          }}
+          onClick={ToggleSidebar}
+        ></i>
         {filterAttributes.map((filterItems, index) => {
           return (
             <div style={{ textAlign: "start" }} key={index}>
